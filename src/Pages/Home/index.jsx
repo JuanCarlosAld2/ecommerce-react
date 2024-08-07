@@ -1,12 +1,12 @@
 import { Layout } from '../../Components/layaout'
 import { Card } from '../../Components/Card'
-import { useFetchProducts } from './useFetchProducts';
-
+import { ShoppingCartContext } from '../../Context';
+import React from 'react';
 function Home() {
 
-  const URL = 'https://api.escuelajs.co/api/v1/products';
 
-  const { products, loading, error } = useFetchProducts(URL);
+
+  const {products} = React.useContext(ShoppingCartContext)
 
   return (
     
