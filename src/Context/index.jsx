@@ -14,7 +14,19 @@ const ShoppingCartProvider = ({ children }) => {
         error,
         setError,
         fetchData,
+        count,
+        setCount,
+        activeDetail,
+        setActiveDetail,
+        productToShow,
+        setProductToShow,
+        
     } = useLocalStorage(URL, []);
+
+    // Product detail open/close
+    const openActiveDetail = () => setActiveDetail(true)
+    const closeActiveDetail = () => setActiveDetail(false)
+
 
     return (
         <ShoppingCartContext.Provider value={{
@@ -24,7 +36,14 @@ const ShoppingCartProvider = ({ children }) => {
             setLoading,
             error,
             setError,
-            fetchData
+            fetchData,
+            count, 
+            setCount,
+            activeDetail,
+            productToShow,
+            setProductToShow,
+            openActiveDetail,
+            closeActiveDetail,
         }}>
             {children}
         </ShoppingCartContext.Provider>

@@ -3,21 +3,36 @@ import React, { useState, useEffect } from "react";
 
 function useLocalStorage(url,initialValue){
 
-    const [products, setProducts] = useState(initialValue);
+  // application: load
     const [loading, setLoading] = useState(true);
+
+  //full of errors
     const [error, setError] = useState(null);
+
+  // all products 
+    const [products, setProducts] = useState(initialValue);
+
+  // shopping cart - increment queatity
+    const [count, setCount] = useState(0)
+
+  //Product detail open/close
+    const [activeDetail, setActiveDetail] = useState(false)
+
+  //only product
+    const [productToShow, setProductToShow] = useState({})
         
 
+  //  fetch pentitions
+  async function fetchData(urlAPI) {
+      const response = await fetch(urlAPI);
+        if(!response)  throw new Error(`HTTP error! Status: ${response.status}`)
+        const data = await response.json();
+        return data
+  }
 
-    async function fetchData(urlAPI) {
-        const response = await fetch(urlAPI);
-          if(!response)  throw new Error(`HTTP error! Status: ${response.status}`)
-          const data = await response.json();
-          return data
-    }
 
+  // Uploading data to all products
 
-    
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -47,8 +62,13 @@ return {
     setLoading,
     error,
     setError,
-    fetchData
-
+    count, 
+    setCount,
+    activeDetail,
+    setActiveDetail,
+    productToShow,
+    setProductToShow,
+    fetchData,
 }
 
 }

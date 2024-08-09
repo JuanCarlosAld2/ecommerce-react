@@ -1,8 +1,13 @@
-
-import React from "react";
+import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { ShoppingCartContext } from "../../Context";
+import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
 
+
 const NavBar = () => {
+
+    const {count} = useContext(ShoppingCartContext)
+
  
     const activeStyle = 'underline underline-offset-4'
     return (
@@ -103,11 +108,14 @@ const NavBar = () => {
 
                     </NavLink>
                 </li>
-                <li>
-                    🛒 0
+                <li className='flex items-center ml-2'>
+                   <ShoppingCartIcon className='h-6 w-6 text-black-500'/>
+                   <div className='ml-1'>
+                        {count}
+                   </div>
                 </li>
             </ul>
-        </nav>
+        </nav> 
     )
 }
 
@@ -115,8 +123,10 @@ export {NavBar}
 
 
 /*
+
+flex = con solo colocarlo los elemtos se posiciona uno a lado del otro 
 z-10 z-index
 w-full = width-full todo el tamaño de la pantalla
 
-
+<nav></nav> = etiqurta con contexto para barra de navegacion
 */

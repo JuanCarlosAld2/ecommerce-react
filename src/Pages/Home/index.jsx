@@ -1,12 +1,16 @@
 import { Layout } from '../../Components/layaout'
 import { Card } from '../../Components/Card'
+import { ProductDetail } from '../../Components/ProductDetail';
 import { ShoppingCartContext } from '../../Context';
-import React from 'react';
+import React, {useContext} from 'react';
+
+
+
 function Home() {
 
 
 
-  const {products} = React.useContext(ShoppingCartContext)
+  const {products} = useContext(ShoppingCartContext)
 
   return (
     
@@ -25,13 +29,13 @@ function Home() {
                 price={product.price}
                 category={product.category?.name}
                 img={product.images[0]}
+                description={product.description}
               />
             ))
           
           }
-    
-
-        </div>    
+        </div>
+          <ProductDetail/>
     </Layout>
   ) 
 }
