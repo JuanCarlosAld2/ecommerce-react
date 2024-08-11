@@ -28,6 +28,7 @@ const AppUI = () => {
 
     return (
         <>
+          {/* generar un componente que mediante una condicion si loadin es true entonces renderisa estes componnte dse lo contrario has esto nav app */} 
             <NavBar/>
             <AppRoutes/>
         </>

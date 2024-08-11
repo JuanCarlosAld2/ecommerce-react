@@ -4,7 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = ({ children }) => {
-    const URL = 'https://api.escuelajs.co/api/v1/products';
+    const URL = 'https://fakestoreapi.com/products';
 
     const {
         products,
@@ -20,12 +20,20 @@ const ShoppingCartProvider = ({ children }) => {
         setActiveDetail,
         productToShow,
         setProductToShow,
+        shopingCards, 
+        setShopingCards,
+        isCheckoutSideMenu, 
+        setIsCheckoutSideMenu
         
     } = useLocalStorage(URL, []);
 
     // Product detail open/close
     const openActiveDetail = () => setActiveDetail(true)
     const closeActiveDetail = () => setActiveDetail(false)
+
+    // Checkout Side Menu open/close
+    const openCheckOutSideMenu = () => setIsCheckoutSideMenu(true)
+    const closeCheckoutSideMenu = () => setIsCheckoutSideMenu(false)
 
 
     return (
@@ -44,6 +52,11 @@ const ShoppingCartProvider = ({ children }) => {
             setProductToShow,
             openActiveDetail,
             closeActiveDetail,
+            shopingCards, 
+            setShopingCards,
+            isCheckoutSideMenu,
+            openCheckOutSideMenu,
+            closeCheckoutSideMenu,
         }}>
             {children}
         </ShoppingCartContext.Provider>

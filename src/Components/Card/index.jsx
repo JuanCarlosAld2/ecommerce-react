@@ -6,24 +6,31 @@ import React,{useContext} from 'react';
 
 const Card = ({title,price,category,img,description}) => {
     
-    const {setCount, count, openActiveDetail,setProductToShow} = useContext(ShoppingCartContext)
+    const {setCount, count, openActiveDetail,setProductToShow,setShopingCards,shopingCards,openCheckOutSideMenu,closeActiveDetail} = useContext(ShoppingCartContext)
 
-    const añadirCompra = (event) => {
-        event.stopPropagation();
-        setCount(count + 1)
-    }
-
-    const showProduct = () => {
-        const Product = {
+    const returnProductObject = () => {
+        const product = {
             title,
             price,
             category,
             img,
             description
         }
+        return product
+    }
+
+    const showProduct = () => {
         openActiveDetail()
-        setProductToShow(Product)
-        
+        setProductToShow(returnProductObject())
+    }
+
+    const addToProductsToCard = (event) =>{      
+        event.stopPropagation(); // evitar propagacion de 2 funciones 
+        setCount(count + 1) // modidicar estado contador
+        setShopingCards([...shopingCards,returnProductObject()])// modificar estado shopingCards
+        openCheckOutSideMenu()
+        closeActiveDetail();
+
     }
 
     return (
@@ -32,8 +39,9 @@ const Card = ({title,price,category,img,description}) => {
             <figure className='relative mb-2 w-full h-4/5'>
                 <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5'>{category}</span>
                 <img className='w-full h-full object-cover rounded-lg' src={img} alt={title} />
-                <div className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1' onClick={añadirCompra}>
-                    <PlusIcon className='h-6 w-6 text-black-500'/>
+                <div className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1' onClick=             {addToProductsToCard}
+                >
+                    <PlusIcon  className='h-6 w-6 text-black-500'/>
                 </div>
             </figure>
             <p className='flex justify-between'>

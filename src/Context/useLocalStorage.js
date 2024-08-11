@@ -18,8 +18,19 @@ function useLocalStorage(url,initialValue){
   //Product detail open/close
     const [activeDetail, setActiveDetail] = useState(false)
 
+  //Checkout Side Menu open/close
+    const [isCheckoutSideMenu, setIsCheckoutSideMenu] = useState(false)
+    console.log("j", isCheckoutSideMenu);
+    
+
   //only product
     const [productToShow, setProductToShow] = useState({})
+
+  // shoping Cart - Add products to cart
+    const [shopingCards, setShopingCards] = useState([])
+
+     console.log("aqui hando", shopingCards);
+    
         
 
   //  fetch pentitions
@@ -69,6 +80,10 @@ return {
     productToShow,
     setProductToShow,
     fetchData,
+    shopingCards, 
+    setShopingCards,
+    isCheckoutSideMenu, 
+    setIsCheckoutSideMenu,
 }
 
 }
