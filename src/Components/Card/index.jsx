@@ -4,12 +4,13 @@ import React,{useContext} from 'react';
 
 
 
-const Card = ({title,price,category,img,description}) => {
+const Card = ({id,title,price,category,img,description}) => {
     
     const {setCount, count, openActiveDetail,setProductToShow,setShopingCards,shopingCards,openCheckOutSideMenu,closeActiveDetail} = useContext(ShoppingCartContext)
 
     const returnProductObject = () => {
         const product = {
+            id,
             title,
             price,
             category,

@@ -11,7 +11,7 @@ function useLocalStorage(url,initialValue){
 
   // all products 
     const [products, setProducts] = useState(initialValue);
-
+    
   // shopping cart - increment queatity
     const [count, setCount] = useState(0)
 
@@ -20,19 +20,13 @@ function useLocalStorage(url,initialValue){
 
   //Checkout Side Menu open/close
     const [isCheckoutSideMenu, setIsCheckoutSideMenu] = useState(false)
-    console.log("j", isCheckoutSideMenu);
-    
 
   //only product
     const [productToShow, setProductToShow] = useState({})
 
   // shoping Cart - Add products to cart
     const [shopingCards, setShopingCards] = useState([])
-
-     console.log("aqui hando", shopingCards);
     
-        
-
   //  fetch pentitions
   async function fetchData(urlAPI) {
       const response = await fetch(urlAPI);
