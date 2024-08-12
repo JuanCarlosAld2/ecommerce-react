@@ -1,4 +1,4 @@
-import { XMarkIcon } from '@heroicons/react/24/solid'
+import { XMarkIcon} from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context';
 import './CheckoutSideMenu.css'
 import React, {useContext} from "react";
@@ -18,7 +18,7 @@ const CheckoutSideMenu = () =>{
                     <XMarkIcon className='h-6 w-6 text-black-500 cursor-pointer' />
                 </div>
             </div>
-            <div className='px-6'>
+            <div className='px-6 overflow-y-scroll'>
                 {
                     shopingCards &&
                     shopingCards.map((card)=>(
@@ -41,3 +41,16 @@ const CheckoutSideMenu = () =>{
 
 
 export {CheckoutSideMenu};
+
+
+
+/*
+
+    overflow-y-scroll equivalencia en css:
+
+        .element {
+            overflow-y: scroll;
+        }
+
+
+*/
