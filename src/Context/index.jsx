@@ -23,7 +23,9 @@ const ShoppingCartProvider = ({ children }) => {
         shopingCards, 
         setShopingCards,
         isCheckoutSideMenu, 
-        setIsCheckoutSideMenu
+        setIsCheckoutSideMenu,
+        orders, 
+        setOrders,
         
     } = useLocalStorage(URL, []);
 
@@ -57,6 +59,8 @@ const ShoppingCartProvider = ({ children }) => {
             isCheckoutSideMenu,
             openCheckOutSideMenu,
             closeCheckoutSideMenu,
+            orders, 
+            setOrders,
         }}>
             {children}
         </ShoppingCartContext.Provider>

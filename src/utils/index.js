@@ -3,10 +3,13 @@
  * @param {Array} products shopingCards: Array of objects
  * @returns {number} Total price
  */
-const totalPrice = (products) => {
+const totalPrice = (products) => { 
 
     let total = 0;
+    if(!products) return total
+
     products.forEach((product)=> total += product.price )
+
     return total
     
 }

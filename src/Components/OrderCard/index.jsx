@@ -3,6 +3,10 @@ import React from "react";
 
 const OrderCard = ({id,title, img, price, handleDelete}) => {
 
+    let renderXMarlIcon;
+    if(handleDelete) {
+       renderXMarlIcon = <XMarkIcon className='h-6 w-6 text-black-500 cursor-pointer' onClick={()=>handleDelete(id)} />
+    }
     return (
         <div className='flex justify-between items-center mb-3'>
             <div className='flex items-center gap-2'>
@@ -13,8 +17,11 @@ const OrderCard = ({id,title, img, price, handleDelete}) => {
             </div>
             <div className='flex items-center gap-2'> 
                 <p className='text-lg font-medium'>{price}</p>
-                <XMarkIcon className='h-6 w-6 text-black-500 cursor-pointer' onClick={()=>handleDelete(id)} />
-            </div>
+                {
+                    renderXMarlIcon
+                }
+            </div> 
+            
             
         </div>
     )

@@ -26,6 +26,11 @@ function useLocalStorage(url,initialValue){
 
   // shoping Cart - Add products to cart
     const [shopingCards, setShopingCards] = useState([])
+
+  //Shoping Cart - Order    
+    const [orders, setOrders] = useState([])
+    
+
     
   //  fetch pentitions
   async function fetchData(urlAPI) {
@@ -78,6 +83,8 @@ return {
     setShopingCards,
     isCheckoutSideMenu, 
     setIsCheckoutSideMenu,
+    orders, 
+    setOrders,
 }
 
 }

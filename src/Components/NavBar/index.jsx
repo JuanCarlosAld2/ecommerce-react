@@ -6,10 +6,15 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
 
-    const {count} = useContext(ShoppingCartContext)
+    const {count, closeCheckoutSideMenu, openCheckOutSideMenu,isCheckoutSideMenu} = useContext(ShoppingCartContext)
 
  
     const activeStyle = 'underline underline-offset-4'
+
+    const openAndCloseofSideMenu = () =>{
+        if(!isCheckoutSideMenu) return openCheckOutSideMenu()
+        closeCheckoutSideMenu()
+    }
     return (
         <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
             <ul className="flex items-center gap-3">
@@ -109,7 +114,7 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li className='flex items-center ml-2'>
-                   <ShoppingCartIcon className='h-6 w-6 text-black-500'/>
+                   <ShoppingCartIcon className='h-6 w-6 text-black-500' onClick={openAndCloseofSideMenu}/>
                    <div className='ml-1'>
                         {count}
                    </div>
