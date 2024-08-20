@@ -32,11 +32,12 @@ const CheckoutSideMenu = () =>{
         closeCheckoutSideMenu()
         const now = new Date();
         const orderToAdd = {
+            id:Math.floor(Math.random() * 100),
             date:  now.toISOString().slice(0, 10),
             hora: now.toLocaleTimeString(),
             products:shopingCards,
             totalProducts: shopingCards.length,
-            totalPrice: totalPrice()
+            totalPrice: totalPrice(shopingCards)
 
         }
 

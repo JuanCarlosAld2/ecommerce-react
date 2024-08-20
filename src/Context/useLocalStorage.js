@@ -9,7 +9,7 @@ function useLocalStorage(url,initialValue){
   //full of errors
     const [error, setError] = useState(null);
 
-  // all products 
+  // all products -get products 
     const [products, setProducts] = useState(initialValue);
     
   // shopping cart - increment queatity
@@ -29,6 +29,11 @@ function useLocalStorage(url,initialValue){
 
   //Shoping Cart - Order    
     const [orders, setOrders] = useState([])
+
+  //get products by title search
+    const [searchByTitle, setSearchByTitle] = useState('')
+    console.log(searchByTitle);
+    
     
 
     
@@ -85,6 +90,8 @@ return {
     setIsCheckoutSideMenu,
     orders, 
     setOrders,
+    searchByTitle, 
+    setSearchByTitle,
 }
 
 }

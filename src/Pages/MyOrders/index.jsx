@@ -1,50 +1,42 @@
-import {ShoppingCartContext} from '../../Context/index.jsx'
-import { OrderCard } from '../../Components/OrderCard';
+import { ShoppingCartContext } from '../../Context';
 import React, {useContext} from 'react';
+import { Link } from 'react-router-dom';
 import { Layout } from '../../Components/layaout';
+import { OrdersCard } from '../../Components/OrdersCard';
 
 
 function MyOrders() {
 
   const {orders} = useContext(ShoppingCartContext)
 
-  console.log(orders);
-  
+
+  const renderOrdersCard = () => {
+
+    return orders.map((order) => (
+      <Link key={order.id} to={`/my-orders/${order.id}`}>
+        <OrdersCard
+          key={order.id}
+          totalPrice={order.totalPrice}
+          totalProducts={order.totalProducts}
+          date={order.date}
+        />
+      </Link>
+    ));
+  };
 
   return (
     
     <Layout >
-      My Orders
-      <div className='flex flex-col w-80'>
+        <div className='flex items-center justify-center relative w-80 mb-12'>
+          <h1 className='font-medium text-xl'>My orders</h1>
+        </div>
         {
-          orders.length > 0 && 
-          orders?.slice(-1)[0].products?.map((product)=>(
-            <OrderCard
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              img={product.img}
-              price={product.price}
-            />
-           
-          ))
+          renderOrdersCard()
         }
-      </div>
+     
     </Layout>
   )
 }
 
 export {MyOrders}
 
-
-/*
-   <OrderCard
-              key={card.id}
-              id={card.id}
-              title={card.title}
-              img={card.img}
-              price={card.price}
-            />
-
-
-*/
