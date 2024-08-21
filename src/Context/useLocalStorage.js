@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { fetchData } from "../utils";
 
 
 function useLocalStorage(url,initialValue){
@@ -11,6 +12,9 @@ function useLocalStorage(url,initialValue){
 
   // all products -get products 
     const [products, setProducts] = useState(initialValue);
+
+  //filter Products - 
+    const [filteredProducts, setFilteredProducts] = useState([])
     
   // shopping cart - increment queatity
     const [count, setCount] = useState(0)
@@ -32,19 +36,7 @@ function useLocalStorage(url,initialValue){
 
   //get products by title search
     const [searchByTitle, setSearchByTitle] = useState('')
-    console.log(searchByTitle);
     
-    
-
-    
-  //  fetch pentitions
-  async function fetchData(urlAPI) {
-      const response = await fetch(urlAPI);
-        if(!response)  throw new Error(`HTTP error! Status: ${response.status}`)
-        const data = await response.json();
-        return data
-  }
-
 
   // Uploading data to all products
 
@@ -92,6 +84,8 @@ return {
     setOrders,
     searchByTitle, 
     setSearchByTitle,
+    filteredProducts,
+    setFilteredProducts,
 }
 
 }

@@ -14,7 +14,24 @@ const totalPrice = (products) => {
     
 }
 
-export {totalPrice}
+/**
+ * this function returns a json as data 
+ * @param {String} urlAPI Endpoint: specific url 
+ * @returns {json} All products
+ */
+//  fetch pentitions
+async function fetchData(urlAPI) {
+    const response = await fetch(urlAPI);
+      if(!response)  throw new Error(`HTTP error! Status: ${response.status}`)
+      const data = await response.json();
+      return data
+}
+
+export {
+    totalPrice,
+    fetchData,
+}
+
 
 
 
